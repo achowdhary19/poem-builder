@@ -1,0 +1,50 @@
+import src from "*.apng";
+import React from "react";
+import Draggable from "react-draggable";
+import "../App.css";
+import myface from "../assets/myface.txt?raw";
+
+function Tab() {
+  let arr = myface.split("\n");
+
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+  };
+
+  const nodeRef = React.useRef(null);
+  let audio = new Audio("../src/assets/wet.wav");
+  const startAudio = () => {
+    audio.play();
+  };
+
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
+  shuffleArray(arr);
+  shuffleArray(arr);
+
+  return (
+    <div>
+      {arr.map((arr, index) => (
+        <Draggable
+          defaultPosition={{ x: getRandomInt(1400), y: getRandomInt(630) }}
+          // grid={[35, 35]}
+          key={index}
+          onStop={startAudio}
+          nodeRef={nodeRef}
+        >
+          <button className={"tab absolute"} ref={nodeRef}>
+            {arr}
+          </button>
+        </Draggable>
+      ))}
+    </div>
+  );
+}
+export default Tab;
