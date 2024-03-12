@@ -2,11 +2,14 @@
   "name": "vite-project",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://achowdhary19.github.io/poems",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",  
+    "predeploy": "npm run build",
+   "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "bootstrap": "^5.3.2",
@@ -20,6 +23,7 @@
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
+    "gh-pages": "^6.1.1",
     "typescript": "^4.9.3",
     "vite": "^4.1.0"
   }
