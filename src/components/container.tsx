@@ -2,7 +2,6 @@ import React, { Fragment, useRef, useEffect } from "react";
 import ScratchCard from "react-scratchcard-v4";
 import { CUSTOM_BRUSH_PRESET } from "react-scratchcard-v4";
 import Scratch from "./Scratch";
-import js from "../index.js";
 
 interface Props {
   heading: string;
@@ -11,6 +10,7 @@ interface Props {
   img3?: string;
   background?: string;
   overlay?: string;
+  // popup: string;
 
   scratchOff?: () => void;
 }
@@ -34,18 +34,13 @@ const container = ({
     alert("Hello!");
   };
 
-  // useEffect(() => {
-  //   const script = document.createElement("script");
-
-  //   script.src = js;
-  //   script.async = true;
-
-  //   document.body.appendChild(script);
-
-  //   return () => {
-  //     document.body.removeChild(script);
-  //   };
-  // }, []);
+  const open = () => {
+    window.open(
+      "../src/popup1.html",
+      "popUpWindow",
+      "height=100,width=100,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes, target=_parent"
+    );
+  };
 
   return (
     <Fragment>
@@ -58,19 +53,12 @@ const container = ({
             <img className="star" src="../src/assets/star1.png" alt="" />
             <a
               className="d-flex"
-              href="https://sliding.toys/mystic-square/8-puzzle/daily/"
-              // onClick="positionedPopup(this.href,'dance','200','200','400','700','yes');return false"
+              //href="https://sliding.toys/mystic-square/8-puzzle/daily/"
+              onClick={open}
               target="_blank"
             >
               eHELLO
             </a>
-            {/* <a
-              href="pop1"
-              onClick="positionedPopup(this.href,'dance','200','200','400','700','yes');return false"
-            >
-              {" "}
-              <img src="../src/assets/star1.png" alt="pop1" />
-            </a> */}
             <img className="star" src="../src/assets/star3.png" alt="" />
             <img className="star" src="../src/assets/star2.png" alt="" />
             <img className="star" src="../src/assets/star1.png" alt="" />
